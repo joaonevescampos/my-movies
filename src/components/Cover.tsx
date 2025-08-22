@@ -1,5 +1,5 @@
 import coverImage from "../assets/img/cover.png";
-import CustomizedButtons from "./CustumazedButtons";
+import FilledButton from "./FilledButton";
 
 const Cover = () => {
   return (
@@ -13,8 +13,9 @@ const Cover = () => {
         <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80"></div>
         <div className="absolute flex flex-col gap-4 bottom-12 left-12">
           <h1 className="uppercase font-bold">Superman</h1>
-          <div>
-            <CustomizedButtons />
+          <div className="flex gap-4">
+            <FilledButton text = "Assistir" bgColor="#6700D4"/>
+            <FilledButton text = "Trailer" bgColor="#ffffff"/>
           </div>
         </div>
       </div>
