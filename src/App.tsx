@@ -1,6 +1,6 @@
 import Menu from './components/Menu'
-import './App.css'
 import Cover from './components/Cover'
+import ListMovies from './components/ListMovies'
 
 function App() {
 
@@ -8,6 +8,10 @@ function App() {
     <>
     <Menu />
     <Cover />
+    <ListMovies />
+    <ListMovies />
+    <ListMovies />
+
     </>
   )
 }

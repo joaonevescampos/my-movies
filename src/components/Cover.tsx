@@ -4,11 +4,11 @@ import CustomizedButtons from "./CustumazedButtons";
 const Cover = () => {
   return (
     <section>
-      <picture className="relative w-full">
+      <div className="relative w-full h-full">
         <img
           src={coverImage}
           alt="superman"
-          className="w-full h-auto object-cover"
+          className="w-full h-full max-h-[500px] object-cover"
         />
         <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80"></div>
         <div className="absolute flex flex-col gap-4 bottom-12 left-12">
@@ -17,7 +17,7 @@ const Cover = () => {
             <CustomizedButtons />
           </div>
         </div>
-      </picture>
+      </div>
     </section>
   );
 };
