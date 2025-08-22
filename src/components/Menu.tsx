@@ -16,19 +16,20 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import { Link } from "react-router-dom";
 
 export default function Menu() {
   const [open, setOpen] = React.useState(false);
 
   const menuItems = [
-    {text: "Pesquisar", icon: <SearchIcon style={{ color: 'grey' }}/> },
-    {text: "Home", icon: <HomeIcon style={{ color: 'grey' }} />},
-    {text: "Filmes", icon: < MovieIcon style={{ color: 'grey' }}/>},
-    {text: "Séries", icon: < MonitorIcon style={{ color: 'grey' }}/>},
-    {text: "Mais", icon: < AddIcon style={{ color: 'grey' }}/>},
-    {text: "Em alta", icon: < TrendingUpIcon style={{ color: 'grey' }}/>},
-    {text: "Filme aleatório", icon: < ShuffleIcon style={{ color: 'grey' }}/>},
-    {text: "Meus favoritos", icon: < FavoriteBorderOutlinedIcon style={{ color: 'grey' }}/>},
+    {text: "Pesquisar", icon: <SearchIcon style={{ color: 'grey' }}/>, path: "/search" },
+    {text: "Home", icon: <HomeIcon style={{ color: 'grey' }} />, path: "/"},
+    {text: "Filmes", icon: < MovieIcon style={{ color: 'grey' }}/>, path: "/search"},
+    {text: "Séries", icon: < MonitorIcon style={{ color: 'grey' }}/>, path: "/search"},
+    {text: "Mais", icon: < AddIcon style={{ color: 'grey' }}/>, path: "/search"},
+    {text: "Em alta", icon: < TrendingUpIcon style={{ color: 'grey' }}/>, path: "/search"},
+    {text: "Filme aleatório", icon: < ShuffleIcon style={{ color: 'grey' }}/>, path: "/search"},
+    {text: "Meus favoritos", icon: < FavoriteBorderOutlinedIcon style={{ color: 'grey' }}/>, path: "/favorites"},
   ];
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -36,14 +37,16 @@ export default function Menu() {
   };
 
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} className="bg-black text-white h-full">
+    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} className="bg-black h-full">
       <List>
         {menuItems.map((obj) => (
           <ListItem key={obj.text} disablePadding>
-            <ListItemButton>
+            <Link to={obj.path} className="text-white!">
+            <ListItemButton >
               <ListItemIcon >{obj.icon}</ListItemIcon>
               <ListItemText primary={obj.text} />
             </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>

@@ -27,7 +27,7 @@ const Footer = () => {
       <div className="flex flex-col gap-2 text-sm">
         <span className="text-gray-500">API consumida:</span>
         <a
-          href="https://github.com/joaonevescampos"
+          href="https://developer.themoviedb.org/reference/intro/getting-started"
           target="_blank"
           className="flex gap-4 items-center"
         >
