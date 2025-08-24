@@ -65,7 +65,7 @@ const ListMovies = () => {
   ];
   return (
     <>
-      <div className="flex gap-8 p-8 overflow-auto scrollbar-none max-w-[1600px] m-auto">
+      <div className="flex gap-4 xl:gap-8 p-4 lg:p-8 overflow-auto scrollbar-none max-w-[1600px] m-auto">
         {movies.map((movie) => (
           <MovieItem
             posterUrl={movie.posterUrl}

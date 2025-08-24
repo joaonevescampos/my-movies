@@ -19,7 +19,7 @@ const MovieDetailComponent = () => {
     vote_count: 299,
   };
   return (
-    <main className="relative w-screen h-[calc(100vh-180px)]">
+    <main className="relative w-screen h-[calc(100vh-130px)]">
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
         alt={movie.title}
@@ -27,17 +27,17 @@ const MovieDetailComponent = () => {
       />
       <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80 h-full"></div>
 
-      <div className="flex gap-12 absolute z-10 top-1/2 left-1/2 -translate-1/2 w-full max-w-[1200px] px-16">
+      <div className="flex gap-4 md:gap-12 absolute z-10 top-1/2 left-1/2 -translate-1/2 w-full max-w-[1200px] px-4 md:px-16">
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={movie.title}
-          className="w-64 rounded"
+          className="w-36 md:w-64 object-cover rounded"
         />
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2 md:gap-4">
           <h1 className="font-bold">{movie.title}</h1>
           <h2>{}</h2>
           <span>{movie.release_date}</span>
-          <p>{movie.overview}</p>
+          <p className="text-sm">{movie.overview}</p>
           <span>{movie.vote_average}</span>
           <div className="flex gap-4">
             <FilledButton text="Assistir" bgColor="#6700D4" />
