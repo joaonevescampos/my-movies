@@ -19,11 +19,11 @@ const MovieDetailComponent = () => {
     vote_count: 299,
   };
   return (
-    <main className="relative w-screen h-screen">
+    <main className="relative w-screen h-[calc(100vh-180px)]">
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
         alt={movie.title}
-        className="h-screen w-screen object-cover inset-0"
+        className="h-full w-screen object-cover inset-0"
       />
       <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80 h-full"></div>
 
@@ -31,7 +31,7 @@ const MovieDetailComponent = () => {
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={movie.title}
-          className="w-80 rounded"
+          className="w-64 rounded"
         />
         <div className="flex flex-col gap-4">
           <h1 className="font-bold">{movie.title}</h1>

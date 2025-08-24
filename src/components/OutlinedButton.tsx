@@ -1,23 +1,33 @@
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import { purple } from '@mui/material/colors';
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import { purple } from "@mui/material/colors";
+import { Link } from "react-router-dom";
 
 const MyButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText('#6700D4'),
-  backgroundColor: 'transparent',
-    boxShadow: 'none',
-  textTransform: 'none',
+  color: theme.palette.getContrastText("#6700D4"),
+  backgroundColor: "transparent",
+  boxShadow: "none",
+  textTransform: "none",
   fontSize: 12,
-  fontWeight: 'bold',
-  padding: '6px 35px',
+  fontWeight: "bold",
+  padding: "6px 35px",
   lineHeight: 1.5,
-  border: '1px solid #AF63FF',
-  borderRadius: '20px',
-  '&:hover': {
+  border: "1px solid #AF63FF",
+  borderRadius: "20px",
+  "&:hover": {
     backgroundColor: purple[700],
   },
 }));
 
-export default function OutlinedButton() {
-  return <MyButton>Assistir</MyButton>;
+interface ButtonType {
+  text: string;
+  path: string;
+}
+
+export default function OutlinedButton({ text, path }: ButtonType) {
+  return (
+    <Link to={`movie/${path}`}>
+      <MyButton>{text}</MyButton>
+    </Link>
+  );
 }

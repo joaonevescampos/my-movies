@@ -9,59 +9,71 @@ import moviePoster6 from "../assets/img/image 14.png";
 const ListMovies = () => {
   const movies = [
     {
+      id: "1",
       name: "Missão Impossível",
       posterUrl: moviePoster1,
-      date: "22 de mai de 2025"
+      date: "22 de mai de 2025",
     },
     {
+      id: "1",
       name: "Superman",
       posterUrl: moviePoster2,
-      date: "22 de mai de 2025"
+      date: "22 de mai de 2025",
     },
     {
+      id: "1",
       name: "Elio",
       posterUrl: moviePoster3,
-      date: "22 de mai de 2025"
+      date: "22 de mai de 2025",
     },
     {
+      id: "1",
       name: "Alien",
       posterUrl: moviePoster4,
-      date: "22 de mai de 2025"
+      date: "22 de mai de 2025",
     },
     {
+      id: "1",
       name: "Wandinha",
       posterUrl: moviePoster5,
-      date: "22 de mai de 2025"
+      date: "22 de mai de 2025",
     },
     {
+      id: "1",
       name: "Hora do Mal",
       posterUrl: moviePoster6,
-      date: "22 de mai de 2025"
+      date: "22 de mai de 2025",
     },
-       {
+    {
+      id: "1",
       name: "Alien",
       posterUrl: moviePoster4,
-      date: "22 de mai de 2025"
+      date: "22 de mai de 2025",
     },
     {
+      id: "1",
       name: "Wandinha",
       posterUrl: moviePoster5,
-      date: "22 de mai de 2025"
+      date: "22 de mai de 2025",
     },
     {
+      id: "1",
       name: "Hora do Mal",
       posterUrl: moviePoster6,
-      date: "22 de mai de 2025"
+      date: "22 de mai de 2025",
     },
-  ]
+  ];
   return (
     <>
       <div className="flex gap-8 p-8 overflow-auto scrollbar-none max-w-[1600px] m-auto">
-      {
-        movies.map(movie => (
-          <MovieItem posterUrl={movie.posterUrl} movieName={movie.name} movieDate={movie.date} />
-        ))
-      }
+        {movies.map((movie) => (
+          <MovieItem
+            posterUrl={movie.posterUrl}
+            movieName={movie.name}
+            movieDate={movie.date}
+            movieId={movie.id}
+          />
+        ))}
       </div>
     </>
   );
