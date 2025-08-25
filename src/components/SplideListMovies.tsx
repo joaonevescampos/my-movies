@@ -21,6 +21,7 @@ const SplideListMovies = ({ movies, categoryName }: SplideMovies) => {
                 title={movie.title}
                 releaseDate={movie.release_date}
                 key={movie.id}
+                id={movie.id}
               />
             ))}
           </div>
