@@ -41,7 +41,7 @@ export const MovieItem = ({
         <img
           src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
           alt={title}
-          className="rounded-tl-xl rounded-tr-xl h-52 md:h-72 object-cover"
+          className="rounded-tl-xl rounded-tr-xl h-52 md:h-80 object-cover"
         />
         <div className="relative flex flex-col p-2 md:p-4 gap-2 bg-[#070707] rounded-bl-xl rounded-br-xl w-[138px] md:w-[200px]">
           {favorited ? (

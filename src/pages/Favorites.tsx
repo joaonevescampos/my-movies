@@ -65,7 +65,7 @@ const Favorites = () => {
   return (
     <>
       <Menu />
-      <main className="relative m-16">
+      <main className="relative my-16">
         <h1 className="text-center text-xl md:text-2xl font-bold p-4">
           Meus favoritos
         </h1>
