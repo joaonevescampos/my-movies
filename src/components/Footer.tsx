@@ -1,5 +1,5 @@
 import githubIcon from "../assets/img/github-icon.png";
-import logo from "../assets/img/logo-cortada.png";
+import logo from "../assets/img/logo.png";
 import tmdbLogo from "../assets/img/tmdb-logo.svg";
 
 const Footer = () => {

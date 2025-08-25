@@ -5,7 +5,7 @@ interface MovieProps {
   posterPath: string;
   title: string;
   releaseDate: string;
-  id:string;
+  id?:string;
 }
 
 export const MovieItem = ({

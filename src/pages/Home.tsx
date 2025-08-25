@@ -19,10 +19,6 @@ function Home() {
   const [upComingMovies, setUpComingMovies] = useState<Movie[]>([]);
   const [randomPopularMovie, setRandomPopularMovie] = useState<Movie>();
 
-  //  const randomNumber: number =
-  //   popularMovies?.length > 0 ? Math.random() * popularMovies.length : 0;
-  // setRandomPopularMovie(popularMovies[randomNumber]);
-
   useEffect(() => {
     const randomNumber: number =
       popularMovies?.length > 0

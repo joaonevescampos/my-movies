@@ -7,7 +7,7 @@ const ListMovies = () => {
     poster_path: string;
     title: string;
     release_date: string;
-    id: string;
+    id?: string;
   }
 
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -17,26 +17,18 @@ const ListMovies = () => {
       setMovies(data.results);
     });
   }, []);
-  
+
   return (
     <>
       <div className="flex gap-4 justify-around max-w-[1150px] w-fit flex-wrap m-auto p-4">
-        {movies.length === 0 ? (
-          <p>Não tem filmes</p>
-        ) : (
-          <div>
-            <h2>Teste</h2>
-            {movies.map((movie) => (
-              <MovieItem
-                posterPath={movie.poster_path}
-                title={movie.title}
-                releaseDate={movie.release_date}
-                key={movie.id}
-              />
-            ))}
-          </div>
-          
-        )}
+        {movies.map((movie) => (
+          <MovieItem
+            posterPath={movie.poster_path}
+            title={movie.title}
+            releaseDate={movie.release_date}
+            key={movie.id}
+          />
+        ))}
       </div>
     </>
   );

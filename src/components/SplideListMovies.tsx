@@ -1,6 +1,11 @@
 import { MovieItem } from "./MovieItem";
 
-const SplideListMovies = ({ movies, categoryName }) => {
+interface SplideMovies {
+  movies: any[];
+  categoryName:string
+
+}
+const SplideListMovies = ({ movies, categoryName }: SplideMovies) => {
   return (
     <>
       {movies.length === 0 ? (

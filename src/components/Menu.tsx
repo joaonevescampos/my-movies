@@ -17,7 +17,7 @@ import ShuffleIcon from "@mui/icons-material/Shuffle";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { Link } from "react-router-dom";
-import logo from "../assets/img/logo-cortada.png";
+import logo from "../assets/img/logo.png";
 
 export default function Menu() {
   const [open, setOpen] = React.useState(false);
