@@ -9,7 +9,7 @@ const Cover = ({movie}:any) => {
         <img
           src={movie?.backdrop_path ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}` : backdropFallback}
           alt="superman"
-          className="w-full h-full min-h-[400px] lg:max-h-[600px] object-cover"
+          className="w-full h-full min-h-[300px] lg:max-h-[600px] object-cover"
         />
         <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80"></div>
         <div className="absolute flex flex-col gap-4 bottom-4 left-4 md:bottom-8 md:left-8">

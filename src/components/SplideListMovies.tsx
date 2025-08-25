@@ -1,4 +1,5 @@
 import { MovieItem } from "./MovieItem";
+import Loading from "./Loading";
 
 interface SplideMovies {
   movies: any[];
@@ -9,7 +10,7 @@ const SplideListMovies = ({ movies, categoryName }: SplideMovies) => {
   return (
     <>
       {movies.length === 0 ? (
-        <p>Carregando</p>
+        <Loading />
       ) : (
         <section className="m-auto font-bold p-4 lg:p-8 max-w-[1900px]">
           <h2 className="pb-4 text-xl w-fit">{categoryName}</h2>

@@ -13,7 +13,7 @@ const ListMovies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   useEffect(() => {
     const api = new MovieService();
-    api.getPopularMovies().then((data) => {
+    api.getMovies("/movie/popular?language=pt-BR&page=1").then((data) => {
       setMovies(data.results);
     });
   }, []);

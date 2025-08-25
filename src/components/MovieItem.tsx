@@ -16,18 +16,18 @@ export const MovieItem = ({
 }: MovieProps) => {
   return (
     <>
-      <div className="w-[140px] md:w-[200px]">
+      <div className="w-[138px] md:w-[200px] hover:scale-105 hover:transition-normal">
         <img
           src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
           alt={title}
-          className="rounded-tl-xl rounded-tr-xl"
+          className="rounded-tl-xl rounded-tr-xl h-52 md:h-72 object-cover"
         />
-        <div className="relative flex flex-col p-2 md:p-4 gap-2 bg-[#070707] rounded-bl-xl rounded-br-xl w-[140px] md:w-[200px]">
+        <div className="relative flex flex-col p-2 md:p-4 gap-2 bg-[#070707] rounded-bl-xl rounded-br-xl w-[138px] md:w-[200px]">
           <FavoriteBorderIcon className="absolute right-1 text-gray-500"/>
           <h2 className="font-bold text-sm truncate w-[100px] md:w-[150px]  self-start">
             {title}
           </h2>
-          <span className="text-gray-500 text-xs">{releaseDate}</span>
+          <span className="text-gray-500 text-xs">{releaseDate.slice(0,4)}</span>
           <OutlinedButton text="Detalhes" path={`${id}`} />
         </div>
       </div>

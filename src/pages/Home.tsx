@@ -29,19 +29,19 @@ function Home() {
 
   useEffect(() => {
     const api = new MovieService();
-    api.getPopularMovies().then((data) => {
+    api.getMovies("/movie/popular?language=pt-BR&page=1").then((data) => {
       setPopularMovies(data.results);
     });
 
-    api.getNowPlayingMovies().then((data) => {
+    api.getMovies("/movie/now_playing?language=pt-BR&page=1").then((data) => {
       setnowPlayingMovies(data.results);
     });
 
-    api.getTopRatedMovies().then((data) => {
+    api.getMovies("/movie/top_rated?language=pt-BR&page=1").then((data) => {
       setTopRatedMovies(data.results);
     });
 
-    api.getUpComingMovies().then((data) => {
+    api.getMovies("/movie/upcoming?language=pt-BR&page=1").then((data) => {
       setUpComingMovies(data.results);
     });
   }, []);
