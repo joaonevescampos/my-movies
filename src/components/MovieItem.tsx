@@ -1,8 +1,7 @@
 import { Favorite } from "@mui/icons-material";
 import OutlinedButton from "./OutlinedButton";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useState } from "react";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface MovieProps {
   posterPath: string;
@@ -18,14 +17,13 @@ export const MovieItem = ({
   id,
 }: MovieProps) => {
   const [favorited, setFavorited] = useState(false);
-  // const [wasFavorited, setWasFavorited] = useState(false);
 
-  // useEffect(() => {
-  //   for(let i=0; i < localStorage.length; i++) {
-  //     localStorage.getItem(localStorage.key(i)) == id ? setWasFavorited(true) : setWasFavorited(false)
-  //     console.log('value key', localStorage.getItem(localStorage.key(i)), 'id', id)
-  //   }
-  // }, [wasFavorited])
+  useEffect(() => {
+    const storedMovie = localStorage.getItem(`movieId-${id}`);
+    if (storedMovie) {
+      setFavorited(true);
+    }
+  }, [id]);
 
   const addToFavorite = () => {
     localStorage.setItem(`movieId-${id}`, id);

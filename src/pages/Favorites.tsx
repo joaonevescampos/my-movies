@@ -3,7 +3,8 @@ import Footer from "../components/Footer";
 import ListMovies from "../components/ListMovies";
 import Menu from "../components/Menu";
 import { MovieService } from "../services/movieService";
-import Loading from "../components/Loading";
+// import Loading from "../components/Loading";
+import FilledButton from "../components/FilledButton";
 
 const Favorites = () => {
   const [favoritesId, setFavoritesId] = useState<string[]>([]);
@@ -64,14 +65,18 @@ const Favorites = () => {
   return (
     <>
       <Menu />
-      <main className="relative mt-16">
+      <main className="relative m-16">
         <h1 className="text-center text-xl md:text-2xl font-bold p-4">
           Meus favoritos
         </h1>
-        {favoritesMovies ? (
+        {favoritesMovies.length !== 0 ? (
           <ListMovies moviesList={favoritesMovies} />
         ) : (
-          <Loading />
+          <div className="flex flex-col gap-8 items-center justify-center h-[calc(100vh-210px)] p-4">
+            <h2 className="font-bold text-xl text-center">Não há filmes na sua galeria de favoritos ainda...</h2>
+            <p className="text-gray-400 text-center">Adicione seus filmes e séries favoritos clicando no ícone coração</p>
+            <FilledButton text="Acessar catálogo de filmes" bgColor="#6700D4"/>
+          </div>
         )}
       </main>
       <Footer />
