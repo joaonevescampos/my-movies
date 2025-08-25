@@ -1,6 +1,10 @@
 import { MovieItem } from "./MovieItem";
 
-const ListMovies = ({moviesList}) => {
+type ListMoviesProps = {
+  moviesList: any[];
+};
+
+const ListMovies = ({moviesList}:ListMoviesProps) => {
 
   return (
     <>

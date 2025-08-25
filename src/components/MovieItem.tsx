@@ -1,14 +1,14 @@
-import { Favorite, Key } from "@mui/icons-material";
+import { Favorite } from "@mui/icons-material";
 import OutlinedButton from "./OutlinedButton";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useState } from "react";
 // import { useEffect, useState } from "react";
 
 interface MovieProps {
-  posterPath?: string;
-  title?: string;
-  releaseDate?: string;
-  id?: string;
+  posterPath: string;
+  title: string;
+  releaseDate: string;
+  id: string;
 }
 
 export const MovieItem = ({

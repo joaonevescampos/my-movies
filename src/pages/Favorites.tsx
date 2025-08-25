@@ -12,8 +12,13 @@ const Favorites = () => {
   useEffect(() => {
     const favoriteMoviesId: string[] = [];
     for (let i = 0; i < localStorage.length; i++) {
-      if (localStorage.key(i) !== null) {
-        favoriteMoviesId.push(localStorage.getItem(localStorage.key(i)));
+      const key = localStorage.key(i);
+
+      if (key) {
+        const item = localStorage.getItem(key);
+        if (item) {
+          favoriteMoviesId.push(item);
+        }
       }
     }
     setFavoritesId(favoriteMoviesId);
