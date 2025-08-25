@@ -1,79 +1,42 @@
 import { MovieItem } from "./MovieItem";
-import moviePoster1 from "../assets/img/image 9.png";
-import moviePoster2 from "../assets/img/image 10.png";
-import moviePoster3 from "../assets/img/image 11.png";
-import moviePoster4 from "../assets/img/image 12.png";
-import moviePoster5 from "../assets/img/image 13.png";
-import moviePoster6 from "../assets/img/image 14.png";
+import { useEffect, useState } from "react";
+import { MovieService } from "../services/movieService";
 
 const ListMovies = () => {
-  const movies = [
-    {
-      id: "1",
-      name: "Missão Impossível fdfsfdf dfsdfsdf dfsfsdfsdfsdfsdfs",
-      posterUrl: moviePoster1,
-      date: "22 de mai de 2025",
-    },
-    {
-      id: "1",
-      name: "Superman",
-      posterUrl: moviePoster2,
-      date: "22 de mai de 2025",
-    },
-    {
-      id: "1",
-      name: "Elio",
-      posterUrl: moviePoster3,
-      date: "22 de mai de 2025",
-    },
-    {
-      id: "1",
-      name: "Alien",
-      posterUrl: moviePoster4,
-      date: "22 de mai de 2025",
-    },
-    {
-      id: "1",
-      name: "Wandinha",
-      posterUrl: moviePoster5,
-      date: "22 de mai de 2025",
-    },
-    {
-      id: "1",
-      name: "Hora do Mal",
-      posterUrl: moviePoster6,
-      date: "22 de mai de 2025",
-    },
-    {
-      id: "1",
-      name: "Alien",
-      posterUrl: moviePoster4,
-      date: "22 de mai de 2025",
-    },
-    {
-      id: "1",
-      name: "Wandinha",
-      posterUrl: moviePoster5,
-      date: "22 de mai de 2025",
-    },
-    {
-      id: "1",
-      name: "Hora do Mal",
-      posterUrl: moviePoster6,
-      date: "22 de mai de 2025",
-    },
-  ];
+  interface Movie {
+    poster_path: string;
+    title: string;
+    release_date: string;
+    id: string;
+  }
+
+  const [movies, setMovies] = useState<Movie[]>([]);
+  useEffect(() => {
+    const api = new MovieService();
+    api.getPopularMovies().then((data) => {
+      setMovies(data.results);
+    });
+  }, []);
+  
   return (
     <>
       <div className="flex gap-4 justify-around max-w-[1150px] w-fit flex-wrap m-auto p-4">
-        {movies.map((movie) => (
-          <MovieItem
-            posterUrl={movie.posterUrl}
-            movieName={movie.name}
-            movieDate={movie.date}
-            movieId={movie.id}
-          />
-        ))}
+        {movies.length === 0 ? (
+          <p>Não tem filmes</p>
+        ) : (
+          <div>
+            <h2>Teste</h2>
+            {movies.map((movie) => (
+              <MovieItem
+                posterPath={movie.poster_path}
+                title={movie.title}
+                releaseDate={movie.release_date}
+                key={movie.id}
+              />
+            ))}
+          </div>
+          
+        )}
       </div>
     </>
   );
