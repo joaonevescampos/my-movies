@@ -19,6 +19,7 @@ interface Movie {
 
 const MovieDetailComponent = ({ movieId }: MovieId) => {
   const [movie, setMovie] = useState<Movie>();
+  const [width, setWidth] = useState<number>(window.innerWidth);
 
   useEffect(() => {
     const api = new MovieService();
@@ -35,6 +36,17 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
     console.log("detalhe do filme", movie);
   }, [movie]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // cleanup → remove quando o componente desmontar
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <main className="relative w-screen h-[calc(100vh-132px)] mt-[36px]">
       {!movie ? (
@@ -48,18 +60,31 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
           />
           <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80 h-full"></div>
 
-          <div className="flex gap-4 md:gap-12 absolute z-10 top-1/2 left-1/2 -translate-1/2 w-full max-w-[1000px] px-4 md:px-16">
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
-              alt={movie?.title}
-              className="w-36 md:w-64 object-cover rounded"
-            />
+          <div className="flex flex-col md:flex-row gap-4 md:gap-12 absolute z-10 top-1/2 left-1/2 -translate-1/2 w-full max-w-[1000px] px-4 md:px-16">
+            {width > 768 ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+                alt={movie?.title}
+                className="w-64 object-cover rounded"
+              />
+            ) : (
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movie?.backdrop_path}`}
+                alt={movie?.title}
+                className="w-full max-w-80 m-auto object-cover rounded"
+              />
+            )}
+
             <div className="flex flex-col gap-2 md:gap-4">
               <h1 className="font-bold">{movie?.title}</h1>
               <h2>{}</h2>
-              <span>{movie?.release_date.slice(0, 4)}</span>
-              <p className="text-sm">{movie?.overview}</p>
-              <span>{movie?.vote_average}</span>
+              <span className="opacity-60 text-xs md:text-sm">
+                {movie?.release_date.slice(0, 4)}
+              </span>
+              <p className="text-xs md:text-sm">{movie?.overview}</p>
+              <span className="font-bold text-xs">
+                Avaliação: {movie?.vote_average.toString().slice(0, 3)} / 10
+              </span>
               <div className="flex gap-4">
                 <FilledButton text="Assistir" bgColor="#6700D4" />
                 <FilledButton text="Trailer" bgColor="#ffffff" />

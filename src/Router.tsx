@@ -13,6 +13,8 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/movie/:movieId" element={<MovieDetail />} />
+        <Route path="/favorites/movie/:movieId" element={<MovieDetail />} />
+
         <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -11,7 +11,7 @@ const Cover = ({movie}:any) => {
           alt="superman"
           className="w-full h-full min-h-[300px] lg:max-h-[600px] object-cover"
         />
-        <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80"></div>
+        <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/60"></div>
         <div className="absolute flex flex-col gap-4 bottom-4 left-4 md:bottom-8 md:left-8">
           <h1 className="uppercase font-bold text-xl md:text-4xl">{movie?.title ? `${movie?.title}` : 'BEM VINDO(A) AO MY MOVIES'}</h1>
           <div className="flex gap-4">
