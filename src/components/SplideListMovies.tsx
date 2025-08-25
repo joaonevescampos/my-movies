@@ -6,11 +6,11 @@ import moviePoster4 from "../assets/img/image 12.png";
 import moviePoster5 from "../assets/img/image 13.png";
 import moviePoster6 from "../assets/img/image 14.png";
 
-const ListMovies = () => {
+const SplideListMovies = () => {
   const movies = [
     {
       id: "1",
-      name: "Missão Impossível fdfsfdf dfsdfsdf dfsfsdfsdfsdfsdfs",
+      name: "Missão Impossível dffdsfsdfsd dsfsdf",
       posterUrl: moviePoster1,
       date: "22 de mai de 2025",
     },
@@ -65,7 +65,7 @@ const ListMovies = () => {
   ];
   return (
     <>
-      <div className="flex gap-4 justify-around max-w-[1150px] w-fit flex-wrap m-auto p-4">
+      <div className="flex gap-4 xl:gap-8 p-4 lg:p-8 overflow-auto scrollbar-none max-w-[1600px] m-auto">
         {movies.map((movie) => (
           <MovieItem
             posterUrl={movie.posterUrl}
@@ -79,4 +79,4 @@ const ListMovies = () => {
   );
 };
 
-export default ListMovies;
+export default SplideListMovies;

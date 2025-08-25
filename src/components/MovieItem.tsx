@@ -1,4 +1,5 @@
 import OutlinedButton from "./OutlinedButton";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 interface MovieProps {
   movieId: string;
@@ -15,18 +16,19 @@ export const MovieItem = ({
 }: MovieProps) => {
   return (
     <>
-      <div className="w-[200px]">
+      <div className="w-[140px] md:w-[200px]">
         <img
           src={posterUrl}
           alt={movieName}
           className="rounded-tl-xl rounded-tr-xl"
         />
-        <div className="flex flex-col items-center p-2 gap-2 bg-[#070707] rounded-bl-xl rounded-br-xl">
-          <h2 className="font-bold truncate w-[100px] xl:w-96 text-center">
+        <div className="relative flex flex-col p-2 md:p-4 gap-2 bg-[#070707] rounded-bl-xl rounded-br-xl w-[140px] md:w-[200px]">
+          <FavoriteBorderIcon className="absolute right-1 text-gray-500"/>
+          <h2 className="font-bold text-sm truncate w-[100px] md:w-[150px]  self-start">
             {movieName}
           </h2>
-          <span className="text-gray-500 text-sm">{movieDate}</span>
-          <OutlinedButton text="Assistir" path={`${movieId}`} />
+          <span className="text-gray-500 text-xs">{movieDate}</span>
+          <OutlinedButton text="Detalhes" path={`${movieId}`} />
         </div>
       </div>
     </>

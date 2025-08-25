@@ -1,6 +1,6 @@
 import Menu from "../components/Menu";
 import Cover from "../components/Cover";
-import ListMovies from "../components/ListMovies";
+import SplideListMovies from "../components/SplideListMovies";
 import SearchComponent from "../components/SearchComponent";
 import Footer from "../components/Footer";
 
@@ -11,9 +11,9 @@ function Home() {
       <Cover />
       <main>
         <SearchComponent />
-        <ListMovies />
-        <ListMovies />
-        <ListMovies />
+        <SplideListMovies />
+        <SplideListMovies />
+        <SplideListMovies />
       </main>
       <Footer />
     </>

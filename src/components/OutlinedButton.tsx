@@ -14,6 +14,7 @@ const MyButton = styled(Button)(({ theme }) => ({
   lineHeight: 1.5,
   border: "1px solid #AF63FF",
   borderRadius: "20px",
+  width: "100%",
   "&:hover": {
     backgroundColor: purple[700],
   },
