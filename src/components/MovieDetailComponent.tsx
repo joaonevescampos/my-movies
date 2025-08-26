@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FilledButton from "./FilledButton";
 import { MovieService } from "../services/movieService";
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 interface MovieId {
   movieId: string;
@@ -58,6 +59,10 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
             className="h-full w-screen object-cover inset-0"
           />
           <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80 h-full"></div>
+
+          <Link to="/">
+          <button className="absolute top-0 left-0 text-sm inset-0 text-gray-400 w-fit h-fit p-4"> Voltar à página anterior</button>
+          </Link>
 
           <div className="flex flex-col md:flex-row gap-4 md:gap-12 absolute z-10 top-1/2 left-1/2 -translate-1/2 w-full max-w-[1000px] px-4 md:px-16">
             {width > 768 ? (

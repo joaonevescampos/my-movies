@@ -4,6 +4,7 @@ import Menu from "../components/Menu";
 import SearchComponent from "../components/SearchComponent";
 import { MovieService } from "../services/movieService";
 import ListMovies from "../components/ListMovies";
+import movieImage from "../assets/img/movie-image.png"
 
 const Search = () => {
   const [searchValueFormatted, setsearchValueFormatted] = useState("");
@@ -47,8 +48,9 @@ const Search = () => {
           sendEventClick={handleSearchClick}
         />
         {moviesList.length === 0 ? (
-          <div className="flex items-center justify-center h-[calc(100vh-320px)]">
-            <h2 className="text-xl font-semibold px-4">Nenhum resultado para sua pesquisa ainda. Pesquise seu filme
+          <div className="flex flex-col gap-4 items-center justify-center h-[calc(100vh-320px)]">
+            <img src={movieImage} alt="movie image" className="w-48"/>
+            <h2 className="text-xl font-semibold px-4 text-center">Nenhum resultado para sua pesquisa ainda. Pesquise seu filme
             favorito!</h2>
           </div>
         ) : (

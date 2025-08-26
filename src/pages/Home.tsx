@@ -5,6 +5,7 @@ import SearchComponent from "../components/SearchComponent";
 import Footer from "../components/Footer";
 import { MovieService } from "../services/movieService";
 import { useEffect, useState } from "react";
+import OutlinedButton from "../components/OutlinedButton";
 
 function Home() {
   interface Movie {
@@ -50,7 +51,9 @@ function Home() {
       <Menu />
       <Cover movie={randomPopularMovie} />
       <main>
-        {/* <SearchComponent sendTargetValue={} /> */}
+        <div className="w-fit pt-4 pl-4 md:pl-8">
+          <OutlinedButton text="pesquisar por um filme" path="search"/>
+        </div>
         <SplideListMovies movies={nowPlayingMovies} categoryName="Em cartaz" />
         <SplideListMovies
           movies={topRatedMovies}

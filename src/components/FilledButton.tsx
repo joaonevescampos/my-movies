@@ -31,7 +31,7 @@ export default function FilledButton({
   }));
 
   return (
-    <MyButton variant="contained" onClick={eventClick}>
+    <MyButton type="submit" variant="contained" onClick={eventClick}>
       {" "}
       {text}{" "}
     </MyButton>

@@ -27,8 +27,8 @@ interface ButtonType {
 
 export default function OutlinedButton({ text, path }: ButtonType) {
   return (
-    <Link to={`movie/${path}`}>
-      <MyButton>{text}</MyButton>
+    <Link to={`${path}`}>
+      <MyButton className="max-w-64">{text}</MyButton>
     </Link>
   );
 }

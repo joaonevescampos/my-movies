@@ -71,7 +71,7 @@ export const MovieItem = ({
           <span className="text-gray-500 text-xs">
             {releaseDate.slice(0, 4)}
           </span>
-          <OutlinedButton text="Detalhes" path={`${id}`} />
+          <OutlinedButton text="Detalhes" path={`movie/${id}`} />
         </div>
       </div>
     </>
