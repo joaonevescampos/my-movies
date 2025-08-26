@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import SearchComponent from "../components/SearchComponent";
