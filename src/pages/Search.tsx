@@ -32,9 +32,9 @@ const Search = () => {
       .then((data) => setMoviesList(data.results));
   };
 
-  useEffect(() => {
-    console.log(moviesList);
-  }, [moviesList]);
+  // useEffect(() => {
+  //   console.log(moviesList);
+  // }, [moviesList]);
 
   return (
     <>
