@@ -1,7 +1,6 @@
 import Menu from "../components/Menu";
 import Cover from "../components/Cover";
 import SplideListMovies from "../components/SplideListMovies";
-import SearchComponent from "../components/SearchComponent";
 import Footer from "../components/Footer";
 import { MovieService } from "../services/movieService";
 import { useEffect, useState } from "react";
