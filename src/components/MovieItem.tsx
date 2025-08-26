@@ -2,6 +2,7 @@ import { Favorite } from "@mui/icons-material";
 import OutlinedButton from "./OutlinedButton";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useEffect, useState } from "react";
+import posterFallback from "../assets/img/backdrop-fallback.jpg";
 
 interface MovieProps {
   posterPath: string;
@@ -38,11 +39,19 @@ export const MovieItem = ({
   return (
     <>
       <div className="w-[138px] md:w-[200px] hover:scale-105 hover:transition-normal">
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
-          alt={title}
-          className="rounded-tl-xl rounded-tr-xl h-52 md:h-80 object-cover"
-        />
+        {posterPath ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
+            alt={title}
+            className="rounded-tl-xl rounded-tr-xl h-52 md:h-80 object-cover"
+          />
+        ) : (
+          <img
+            src={posterFallback}
+            alt={title}
+            className="rounded-tl-xl rounded-tr-xl h-52 md:h-80 object-cover"
+          />
+        )}
         <div className="relative flex flex-col p-2 md:p-4 gap-2 bg-[#070707] rounded-bl-xl rounded-br-xl w-[138px] md:w-[200px]">
           {favorited ? (
             <Favorite

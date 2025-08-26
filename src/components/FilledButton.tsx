@@ -1,15 +1,18 @@
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { purple } from "@mui/material/colors";
-import { Link } from "react-router-dom";
-
 interface ButtonType {
   text: string;
   bgColor: string;
   path?: string;
+  eventClick?: () => void;
 }
 
-export default function FilledButton({ text, bgColor, path = "" }: ButtonType) {
+export default function FilledButton({
+  text,
+  bgColor,
+  eventClick,
+}: ButtonType) {
   const MyButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(bgColor),
     backgroundColor: bgColor,
@@ -28,8 +31,9 @@ export default function FilledButton({ text, bgColor, path = "" }: ButtonType) {
   }));
 
   return (
-    <Link to={`/${path}`}>
-      <MyButton variant="contained"> {text} </MyButton>
-    </Link>
+    <MyButton variant="contained" onClick={eventClick}>
+      {" "}
+      {text}{" "}
+    </MyButton>
   );
 }

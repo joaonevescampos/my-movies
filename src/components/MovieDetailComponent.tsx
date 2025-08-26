@@ -43,7 +43,6 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
 
     window.addEventListener("resize", handleResize);
 
-    // cleanup → remove quando o componente desmontar
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 

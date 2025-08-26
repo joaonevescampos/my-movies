@@ -1,12 +1,24 @@
 import FilledButton from "./FilledButton";
+interface FilhoProps {
+  sendTargetValue: (valor: string) => void;
+  sendEventClick: () => void;
 
+}
 
-const SearchComponent = () => {
+const SearchComponent = ({ sendTargetValue, sendEventClick }: FilhoProps) => {
   return (
-    <div className="flex justify-center gap-4 my-8 px-4">
-      <input type="text" className="w-[500px] h-8 border border-gray-600 p-4 rounded-2xl" />
-      <FilledButton text="pesquisar" bgColor="#6700D4"/>
-    </div>
+    <form className="flex justify-center gap-4 my-8 px-4">
+      <input
+        type="text"
+        className="w-[500px] h-8 border border-gray-600 p-4 rounded-2xl"
+        onChange={(e) => sendTargetValue(e.target.value)}
+      />
+      <FilledButton
+        text="pesquisar"
+        bgColor="#6700D4"
+        eventClick={sendEventClick}
+      />
+    </form>
   );
 };
 

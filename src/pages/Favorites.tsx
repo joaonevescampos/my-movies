@@ -10,31 +10,42 @@ const Favorites = () => {
   const [favoritesId, setFavoritesId] = useState<string[]>([]);
   const [favoritesMovies, setFavoritesMovies] = useState<any[]>([]);
 
-  useEffect(() => {
+  const generateArrayFavoritesId = () => {
     const favoriteMoviesId: string[] = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
+    if (localStorage.length > 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
 
-      if (key) {
-        const item = localStorage.getItem(key);
-        if (item) {
-          favoriteMoviesId.push(item);
+        if (key) {
+          const item = localStorage.getItem(key);
+          if (item) {
+            favoriteMoviesId.push(item);
+          }
         }
       }
+      setFavoritesId(favoriteMoviesId);
+    } else {
+      setFavoritesId([]);
     }
-    setFavoritesId(favoriteMoviesId);
+  };
 
+  useEffect(() => {
     const favoriteMoviesList: any[] = [];
     const api = new MovieService();
-    favoritesId.map((movieId) => {
-      api
-        .detailMovie(
-          `https://api.themoviedb.org/3/movie/${movieId}?language=pt-BR`
-        )
-        .then((result: any) => {
-          favoriteMoviesList.push(result.data);
-        });
-    });
+
+    generateArrayFavoritesId()
+
+    if (favoritesId.length > 0) {
+      favoritesId.map((movieId) => {
+        api
+          .detailMovie(
+            `https://api.themoviedb.org/3/movie/${movieId}?language=pt-BR`
+          )
+          .then((result: any) => {
+            favoriteMoviesList.push(result.data);
+          });
+      });
+    }
     setFavoritesMovies(favoriteMoviesList);
   }, []);
 
@@ -73,9 +84,13 @@ const Favorites = () => {
           <ListMovies moviesList={favoritesMovies} />
         ) : (
           <div className="flex flex-col gap-8 items-center justify-center h-[calc(100vh-210px)] p-4">
-            <h2 className="font-bold text-xl text-center">Não há filmes na sua galeria de favoritos ainda...</h2>
-            <p className="text-gray-400 text-center">Adicione seus filmes e séries favoritos clicando no ícone coração</p>
-            <FilledButton text="Acessar catálogo de filmes" bgColor="#6700D4"/>
+            <h2 className="font-bold text-xl text-center">
+              Não há filmes na sua galeria de favoritos ainda...
+            </h2>
+            <p className="text-gray-400 text-center">
+              Adicione seus filmes e séries favoritos clicando no ícone coração
+            </p>
+            <FilledButton text="Acessar catálogo de filmes" bgColor="#6700D4" />
           </div>
         )}
       </main>

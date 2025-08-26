@@ -14,7 +14,7 @@ const Router = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/movie/:movieId" element={<MovieDetail />} />
         <Route path="/favorites/movie/:movieId" element={<MovieDetail />} />
-
+        <Route path="/search/movie/:movieId" element={<MovieDetail />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -50,7 +50,7 @@ function Home() {
       <Menu />
       <Cover movie={randomPopularMovie} />
       <main>
-        <SearchComponent />
+        {/* <SearchComponent sendTargetValue={} /> */}
         <SplideListMovies movies={nowPlayingMovies} categoryName="Em cartaz" />
         <SplideListMovies
           movies={topRatedMovies}

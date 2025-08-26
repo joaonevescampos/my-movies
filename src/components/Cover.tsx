@@ -2,7 +2,6 @@ import FilledButton from "./FilledButton";
 import backdropFallback from "../assets/img/backdrop-fallback.jpg"
 
 const Cover = ({movie}:any) => {
-  console.log(movie)
   return (
     <section>
       <div className="relative w-full h-full">
