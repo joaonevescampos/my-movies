@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import ListMovies from "../components/ListMovies";
 import Menu from "../components/Menu";
-import { MovieService } from "../services/movieService";
-// import Loading from "../components/Loading";
+import { MovieService } from "../services/movieService";;
 import FilledButton from "../components/FilledButton";
+import { Link } from "react-router-dom";
 
 const Favorites = () => {
   const [favoritesId, setFavoritesId] = useState<string[]>([]);
@@ -33,7 +33,7 @@ const Favorites = () => {
     const favoriteMoviesList: any[] = [];
     const api = new MovieService();
 
-    generateArrayFavoritesId()
+    generateArrayFavoritesId();
 
     if (favoritesId.length > 0) {
       favoritesId.map((movieId) => {
@@ -90,7 +90,12 @@ const Favorites = () => {
             <p className="text-gray-400 text-center">
               Adicione seus filmes e séries favoritos clicando no ícone coração
             </p>
-            <FilledButton text="Acessar catálogo de filmes" bgColor="#6700D4" />
+            <Link to="/">
+              <FilledButton
+                text="Acessar catálogo de filmes"
+                bgColor="#6700D4"
+              />
+            </Link>
           </div>
         )}
       </main>
