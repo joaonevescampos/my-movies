@@ -46,13 +46,9 @@ const Search = () => {
       )
       .then((data) => {
         setMoviesList(data.results);
-        setMaxPages(data.total_pages);
+        data.total_pages > 5 ? setMaxPages(5) : setMaxPages(data.total_pages);
       });
   };
-
-  // useEffect(() => {
-  //   console.log(moviesList);
-  // }, [moviesList]);
 
   return (
     <>
