@@ -14,7 +14,7 @@ const Search = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [maxPages, setMaxPages] = useState(5);
 
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     const api = new MovieService();
     api
       .getMovies(
