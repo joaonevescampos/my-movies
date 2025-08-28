@@ -13,20 +13,22 @@ const Cover = ({ movie }: any) => {
               : backdropFallback
           }
           alt="superman"
-          className="w-full h-full min-h-[300px] lg:max-h-[600px] object-cover"
+          className="w-full h-full min-h-[400px] lg:max-h-[600px] object-cover"
         />
         <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-[linear-gradient(to_bottom,rgba(0,0,0,0.3),rgba(0,0,0,1))] bottom-[-1px]"></div>
         <div className="absolute flex flex-col gap-4 bottom-4 left-4 md:bottom-8 md:left-8">
-          <span className="font-semibold text-xl">
-            Bem vindo(a) ao My Movies!
-          </span>
-          <span className="text-gray-300 text-sm">
-            Assista o filme em alta do momento:
-          </span>
+          <div className="flex flex-col gap-1">
+            <span className="font-semibold text-xl">
+              Bem vindo(a) ao My Movies!
+            </span>
+            <span className="text-gray-300 text-sm">
+              Assista o filme em alta do momento:
+            </span>
+          </div>
           <h1 className="uppercase font-bold text-xl md:text-3xl">
             {movie?.title ? `${movie?.title}` : "CARREGANDO..."}
           </h1>
-          <Link to={`movie/${movie?.id}`}>
+          <Link to={`${movie?.provider}`}>
             <FilledButton text="Assistir agora" bgColor="#6700D4" />
           </Link>
         </div>

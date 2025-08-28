@@ -18,7 +18,7 @@ const Search = () => {
     const api = new MovieService();
     api
       .getMovies(
-        `https://api.themoviedb.org/3/search/movie?query=${searchValueFormatted}&language=pt-BR&page=${value}`
+        `/search/movie?query=${searchValueFormatted}&language=pt-BR&page=${value}`
       )
       .then((data) => {
         setMoviesList(data.results);
@@ -42,7 +42,7 @@ const Search = () => {
     const api = new MovieService();
     api
       .getMovies(
-        `https://api.themoviedb.org/3/search/movie?query=${searchValueFormatted}&language=pt-BR`
+        `/search/movie?query=${searchValueFormatted}&language=pt-BR`
       )
       .then((data) => {
         setMoviesList(data.results);

@@ -8,10 +8,11 @@ import OutlinedButton from "../components/OutlinedButton";
 
 function Home() {
   interface Movie {
-    poster_path: string;
+    poster_path?: string;
     title: string;
     release_date: string;
     id: string;
+    provider: string;
   }
   const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
   const [nowPlayingMovies, setnowPlayingMovies] = useState<Movie[]>([]);
@@ -45,13 +46,28 @@ function Home() {
       setUpComingMovies(data.results);
     });
   }, []);
+
+  useEffect(() => {
+    const api = new MovieService();
+    if(randomPopularMovie) {
+      api
+        .detailMovie(`/movie/${randomPopularMovie?.id}/watch/providers`)
+        .then((response) => {
+          const provider = response?.data?.results?.BR?.link
+          if(provider && !randomPopularMovie?.provider) {
+            setRandomPopularMovie({...randomPopularMovie, provider})
+          }
+        });
+    }
+  }, [randomPopularMovie]);
+
   return (
     <>
       <Menu />
       <Cover movie={randomPopularMovie} />
       <main>
         <div className="w-fit pt-4 pl-4 md:pl-8">
-          <OutlinedButton text="pesquisar por um filme" path="search"/>
+          <OutlinedButton text="pesquisar por um filme" path="search" />
         </div>
         <SplideListMovies movies={nowPlayingMovies} categoryName="Em cartaz" />
         <SplideListMovies

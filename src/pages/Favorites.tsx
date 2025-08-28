@@ -39,7 +39,7 @@ const Favorites = () => {
       favoritesId.map((movieId) => {
         api
           .detailMovie(
-            `https://api.themoviedb.org/3/movie/${movieId}?language=pt-BR`
+            `/movie/${movieId}?language=pt-BR`
           )
           .then((result: any) => {
             favoriteMoviesList.push(result.data);
@@ -59,7 +59,7 @@ const Favorites = () => {
         const results = await Promise.all(
           favoritesId.map((movieId) =>
             api.detailMovie(
-              `https://api.themoviedb.org/3/movie/${movieId}?language=pt-BR`
+              `/movie/${movieId}?language=pt-BR`
             )
           )
         );

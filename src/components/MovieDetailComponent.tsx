@@ -4,11 +4,10 @@ import { MovieService } from "../services/movieService";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
 import { Box, Modal } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 interface MovieId {
   movieId: string;
 }
-
 interface Movie {
   poster_path: string;
   title: string;
@@ -17,8 +16,8 @@ interface Movie {
   vote_average: string;
   id?: string;
   backdrop_path: string;
+  provider?: string;
 }
-
 interface Videos {
   trailerId: string;
   moviePath: string;
@@ -37,12 +36,12 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
   const [open, setOpen] = useState(false);
   const [videos, setVideos] = useState<Videos>();
 
+  const navigate = useNavigate();
+
   const handleOpen = () => {
     const api = new MovieService();
     api
-      .detailMovie(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos?language=pt-BR`
-      )
+      .detailMovie(`/movie/${movieId}/videos?language=pt-BR`)
       .then((response: any) => {
         setVideos({
           trailerId: response.data.results[1].key,
@@ -54,18 +53,10 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    console.log('videos', videos)
-  }, [videos])
-
-  useEffect(() => {
     const api = new MovieService();
-    api
-      .detailMovie(
-        `https://api.themoviedb.org/3/movie/${movieId}?language=pt-BR`
-      )
-      .then((result: any) => {
-        setMovie(result.data);
-      });
+    api.detailMovie(`/movie/${movieId}?language=pt-BR`).then((result: any) => {
+      setMovie(result.data);
+    });
   }, []);
 
   useEffect(() => {
@@ -77,6 +68,18 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    const api = new MovieService();
+    if (movie) {
+      api.detailMovie(`/movie/${movieId}/watch/providers`).then((response) => {
+        const provider = response?.data?.results?.BR?.link;
+        if (provider && !movie?.provider) {
+          setMovie({ ...movie, provider });
+        }
+      });
+    }
+  }, [movie]);
 
   return (
     <main className="relative w-screen h-[calc(100vh-132px)] mt-[36px]">
@@ -92,8 +95,10 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
           <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80 h-full"></div>
 
           <Link to="/">
-            <button className="absolute top-0 left-0 text-sm inset-0 text-gray-400 w-fit h-fit p-4">
-              {" "}
+            <button
+              className="absolute top-0 left-0 text-sm inset-0 text-gray-400 w-fit h-fit p-4 cursor-pointer"
+              onClick={() => navigate(-1)}
+            >
               Voltar à página anterior
             </button>
           </Link>
@@ -124,7 +129,7 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
                 Avaliação: {movie?.vote_average.toString().slice(0, 3)} / 10
               </span>
               <div className="flex gap-4">
-                <a href={videos?.moviePath} target="_blank">
+                <a href={movie?.provider} target="_blank">
                   <FilledButton text="Assistir" bgColor="#6700D4" />
                 </a>
                 <FilledButton

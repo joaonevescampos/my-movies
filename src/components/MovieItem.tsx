@@ -55,12 +55,12 @@ export const MovieItem = ({
         <div className="relative flex flex-col p-2 md:p-4 gap-2 bg-[#070707] rounded-bl-xl rounded-br-xl w-[138px] md:w-[200px]">
           {favorited ? (
             <Favorite
-              className="absolute right-1 text-[#AF63FF]"
+              className="absolute right-1 text-[#AF63FF] cursor-pointer"
               onClick={removeFavorite}
             />
           ) : (
             <FavoriteBorderIcon
-              className="absolute right-1 text-gray-500"
+              className="absolute right-1 text-gray-500 cursor-pointer"
               onClick={addToFavorite}
             />
           )}
