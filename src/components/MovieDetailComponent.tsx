@@ -3,6 +3,7 @@ import FilledButton from "./FilledButton";
 import { MovieService } from "../services/movieService";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import { Box, Modal } from "@mui/material";
 
 interface MovieId {
   movieId: string;
@@ -18,9 +19,43 @@ interface Movie {
   backdrop_path: string;
 }
 
+interface Videos {
+  trailerId: string;
+  moviePath: string;
+}
+
+const modalStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+};
+
 const MovieDetailComponent = ({ movieId }: MovieId) => {
   const [movie, setMovie] = useState<Movie>();
   const [width, setWidth] = useState<number>(window.innerWidth);
+  const [open, setOpen] = useState(false);
+  const [videos, setVideos] = useState<Videos>();
+
+  const handleOpen = () => {
+    const api = new MovieService();
+    api
+      .detailMovie(
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?language=pt-BR`
+      )
+      .then((response: any) => {
+        setVideos({
+          trailerId: response.data.results[1].key,
+          moviePath: response.data.results[1].id,
+        });
+      });
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    console.log('videos', videos)
+  }, [videos])
 
   useEffect(() => {
     const api = new MovieService();
@@ -32,10 +67,6 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
         setMovie(result.data);
       });
   }, []);
-
-  useEffect(() => {
-    console.log("detalhe do filme", movie);
-  }, [movie]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,7 +92,10 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
           <div className="absolute inset-0 before:content-[''] before:absolute before:inset-0 before:bg-black/80 h-full"></div>
 
           <Link to="/">
-          <button className="absolute top-0 left-0 text-sm inset-0 text-gray-400 w-fit h-fit p-4"> Voltar à página anterior</button>
+            <button className="absolute top-0 left-0 text-sm inset-0 text-gray-400 w-fit h-fit p-4">
+              {" "}
+              Voltar à página anterior
+            </button>
           </Link>
 
           <div className="flex flex-col md:flex-row gap-4 md:gap-12 absolute z-10 top-1/2 left-1/2 -translate-1/2 w-full max-w-[1000px] px-4 md:px-16">
@@ -90,13 +124,38 @@ const MovieDetailComponent = ({ movieId }: MovieId) => {
                 Avaliação: {movie?.vote_average.toString().slice(0, 3)} / 10
               </span>
               <div className="flex gap-4">
-                <FilledButton text="Assistir" bgColor="#6700D4" />
-                <FilledButton text="Trailer" bgColor="#ffffff" />
+                <a href={videos?.moviePath} target="_blank">
+                  <FilledButton text="Assistir" bgColor="#6700D4" />
+                </a>
+                <FilledButton
+                  text="Trailer"
+                  bgColor="#ffffff"
+                  eventClick={handleOpen}
+                />
               </div>
             </div>
           </div>
         </>
       )}
+      {/* modal  */}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <iframe
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${videos?.trailerId}`}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+        </Box>
+      </Modal>
     </main>
   );
 };
