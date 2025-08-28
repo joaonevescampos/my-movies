@@ -16,6 +16,57 @@ O **my-movies** é uma plataforma de filmes e séries inspirada na Netflix, dese
 ## 🛠️ Instalação e Execução Local
 
 1. **Clone o repositório:**
-   ```sh
-   git clone https://github.com/seu-usuario/my-movies.git
+
+   ```bash
+   git clone https://github.com/joaonevescampos/my-movies
+   ```
+
+2. **Entre na pasta do projeto:**
+   ```bash
    cd my-movies
+   ```
+3. **Configure o .env:**
+
+- Gere um token de autenticação no [TMDB API](https://developers.themoviedb.org/3) 
+- Crie um arquivo ".env" na raíz do projeto
+- Adicione o .env com seu VITE_TOKEN, gerado na api do TMDB.
+- EX: VITE_TOKEN="seu-token-aqui"
+
+4. **Rode o projeto:**
+   ```bash
+   npm run dev
+   ```
+
+## Funcionalidades
+
+- Listagem de filmes por categoria;
+
+- Pesquisar filme;
+
+- Paginar filmes;
+
+- Ver detalhamento de um filme;
+
+- Adicionar aos favoritos
+
+- Ver sua listagem de filmes favoritos;
+
+- Assistir trailer;
+
+- Ver provedores disponíveis para assistir o filme (Prime Video, Netflix, Mercado Play...)
+
+## Funcoionalidades Futuras
+
+- Cadastro;
+
+- Login;
+
+- Sortear filme;
+
+- Pesquisa e listagem de séries;
+
+- Detalhamento de série;
+
+## Autor
+
+[João Campos](https://github.com/joaonevescampos/my-movies)
