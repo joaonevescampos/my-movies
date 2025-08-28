@@ -32,27 +32,27 @@ export default function Menu() {
     {
       text: "Filmes",
       icon: <MovieIcon style={{ color: "grey" }} />,
-      path: "/search",
+      path: "/building",
     },
     {
       text: "Séries",
       icon: <MonitorIcon style={{ color: "grey" }} />,
-      path: "/search",
+      path: "/building",
     },
     {
       text: "Mais",
       icon: <AddIcon style={{ color: "grey" }} />,
-      path: "/search",
+      path: "/building",
     },
     {
       text: "Em alta",
       icon: <TrendingUpIcon style={{ color: "grey" }} />,
-      path: "/search",
+      path: "/building",
     },
     {
       text: "Filme aleatório",
       icon: <ShuffleIcon style={{ color: "grey" }} />,
-      path: "/search",
+      path: "/building",
     },
     {
       text: "Meus favoritos",

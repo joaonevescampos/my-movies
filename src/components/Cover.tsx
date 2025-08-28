@@ -21,7 +21,7 @@ const Cover = ({ movie }: any) => {
             <span className="font-semibold text-xl">
               Bem vindo(a) ao My Movies!
             </span>
-            <span className="text-gray-300 text-sm">
+            <span className="opacity-50 text-sm">
               Assista o filme em alta do momento:
             </span>
           </div>
